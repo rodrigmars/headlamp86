@@ -1,14 +1,34 @@
-interface User {
+import { createReadStream } from 'node:fs'
 
-    name:string,
-    age:number
+interface User {
+    name: string,
+    age: number
 
 }
 
-let user:User = {
+let user: User = {
     name: "teste",
     age: 25
 }
 
 
-console.log(user)
+function getPlato() {
+
+    const rs = createReadStream('./src/malac.txt', { highWaterMark: 4 })
+
+    const interval: number = 2
+
+    rs.on("data", chunk => {
+
+        setInterval(() => {
+
+            console.log(chunk.toString())
+            console.log("--------------")
+
+        }, interval * 1000);
+       
+    })
+
+}
+
+getPlato()
