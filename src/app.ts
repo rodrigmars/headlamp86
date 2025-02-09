@@ -25,10 +25,26 @@ function getPlato() {
             console.log(chunk.toString())
             console.log("--------------")
 
+            throw Error("Logar erro teste")
+
         }, interval * 1000);
-       
+
     })
 
 }
 
-getPlato()
+
+function main() {
+
+    try {
+
+        getPlato()
+
+    } catch (err) {
+        // inserir evento para registrar erros
+        console.error('error:', err)
+    }
+
+} 
+
+main()
