@@ -1,4 +1,5 @@
 import { createReadStream } from 'node:fs'
+import { AppError } from './errors/AppError';
 
 interface User {
     name: string,
@@ -25,7 +26,7 @@ function getPlato() {
             console.log(chunk.toString())
             console.log("--------------")
 
-            throw Error("Logar erro teste")
+            throw new AppError('Logar erro teste', 2521);
 
         }, interval * 1000);
 
@@ -45,6 +46,6 @@ function main() {
         console.error('error:', err)
     }
 
-} 
+}
 
 main()

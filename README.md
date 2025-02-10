@@ -17,3 +17,11 @@ nvm use $(Get-Content .nvmrc)
 ```bash
 nvm use .nvmrc
 ```
+### Instalação e execução
+```powershell
+# Instalação de dependências
+pnpm install
+
+# Execução
+pnpm run dev
+```
