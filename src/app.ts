@@ -1,4 +1,4 @@
-import { createReadStream } from 'node:fs'
+import { createReadStream, existsSync, ReadStream } from 'node:fs'
 import { AppError } from './errors/AppError';
 
 interface User {
@@ -12,26 +12,28 @@ let user: User = {
     age: 25
 }
 
+interface FileJob {
+    name: string,
+    totalBytes: number
+}
 
-function getPlato() {
+function task(fileJob: FileJob): void {
 
-    const rs = createReadStream('./src/malac.txt', { highWaterMark: 4 })
+    if (!existsSync(fileJob.name)) {
+        throw new Error(`Arquivo ${fileJob.name} não identificado`);
+    }
 
-    const interval: number = 2
+    const rs: ReadStream = createReadStream(fileJob.name, { highWaterMark: fileJob.totalBytes })
 
     rs.on("data", chunk => {
-
-        setInterval(() => {
-
-            console.log(chunk.toString())
-            console.log("--------------")
-
-            throw new AppError('Logar erro teste', 2521);
-
-        }, interval * 1000);
+        console.log(chunk.toString(), `total bytes:${rs.bytesRead}`)
+        console.log("--------------")
 
     })
-
+        .on("close", () => {
+            rs.destroy()
+            console.log("Tarefa processada status OK")
+        })
 }
 
 
@@ -39,10 +41,18 @@ function main() {
 
     try {
 
-        getPlato()
+        task({ name: './src/malac.txt', totalBytes: 4 })
 
     } catch (err) {
-        // inserir evento para registrar erros
+
+        console.log("Tarefa com status NOK!!!")
+
+        if (err instanceof AppError) {
+            // inserir evento para registrar erros
+            console.error('error:', err.message)
+            return;
+        }
+
         console.error('error:', err)
     }
 
