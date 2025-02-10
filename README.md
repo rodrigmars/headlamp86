@@ -9,11 +9,11 @@ Outro ponto interessante neste projeto é explocar o desenvolvimento de jobs usa
 
 Após clonar o projeto, configurar a versão do Node conforme o sistema operacional.
 
-##Windows
+## Windows
 ```powershell
 nvm use $(Get-Content .nvmrc)
 ```
-##Linux
+## Linux
 ```bash
 nvm use .nvmrc
 ```
