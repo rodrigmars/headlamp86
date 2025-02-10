@@ -1,12 +1,7 @@
-# headlamp86
-Um projeto conspiratório sobre o headlamp86.
+# Headlamp86
+A motivação deste projeto é demonstrar como utilizar eventos no desenvolvimento de arquiteturas xxxx no back-end e porque escolher eventos no lugar de funções. Este projeto deve explorar o desenvolvimento de jobs usando Node e Typescript com eventos.
 
-A intenção é estudar e demonstrar como utilizar eventos e possíveis idéias para o desenvolvimento de arquiteturas orientadas a eventos com back-end. 
-
-Porque escolher eventos como uma altenativa no lugar de funções ?
-
-Outro ponto interessante neste projeto é explocar o desenvolvimento de jobs usando o Node com eventos executados em um processo local sem necessidade de uma comunicação baseada em protocolo http.
-
+### Preparando um terraform
 Após clonar o projeto, configurar a versão do Node conforme o sistema operacional.
 
 ## Windows
