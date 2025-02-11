@@ -1,6 +1,6 @@
-import { FileTokenEvent } from '../events/FileTokenEvent';
-import { FileDTO, MessageError } from '../DTO'
 import { existsSync } from 'node:fs'
+import { FileDTO, MessageError } from '../DTO'
+import { FileTokenEvent } from '../events/FileTokenEvent';
 import { jobFile } from '../service/jobFile'
 
 export function terraForm(fileDTO: FileDTO) {
