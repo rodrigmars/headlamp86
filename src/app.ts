@@ -1,14 +1,14 @@
-import { FileTokenEvent } from './events/FileTokenEvent';
+import { terraForm } from './service/terraForm'
 
-(() => {
+((fn: CallableFunction) => {
 
     console.log(`Dispara serviço\n`)
 
-    new FileTokenEvent({
+    fn({
         name: `./src/malac.txt`,
         totalBytes: 4
-    }).emit(`task`)
+    })
 
-})()
+})(terraForm)
 
 
